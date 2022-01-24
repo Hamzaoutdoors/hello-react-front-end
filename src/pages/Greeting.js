@@ -5,18 +5,14 @@ import { fetchGreetings } from '../redux/greetings/greetings';
 
 const Greeting = () => {
   const dispatch = useDispatch();
-  const greetings = useSelector((state) => state.greetings);
+  const greeting = useSelector((state) => state.greeting);
 
   return (
-    <div>
-      <h1>Greetings</h1>
+    <div className="container">
       <Link to="/" className="btn btn-dark">Go Back home</Link>
-      <button type="button" onClick={() => dispatch(fetchGreetings())}>Get Greetings</button>
-      <ul>
-        {
-         greetings.map((greeting) => <li key={greeting.id}>{greeting.name}</li>)
-                }
-      </ul>
+      <p className="text-center">Press the button below to have a random greeting</p>
+      <button type="button" onClick={() => dispatch(fetchGreetings())} className="btn btn-primary">be greeted</button>
+      <h1 className="text-center mt-3 display-1">{greeting.greeting}</h1>
     </div>
   );
 };

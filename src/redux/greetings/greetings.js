@@ -1,12 +1,10 @@
+/* eslint-disable no-console */
 const LOAD_GREETINGS = 'LOAD_GREETINGS';
 
 const URL = 'http://localhost:3000/v1/greetings';
 
 const initialState = {
-  greetings: [{
-    id: 1,
-    name: 'Hello',
-  }],
+  greetings: [],
 };
 
 export const loadGreetings = (payload) => ({
@@ -23,7 +21,8 @@ export const fetchGreetings = () => async (dispatch) => {
 const greetingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_GREETINGS:
-      return action.payload;
+      console.log(action.payload);
+      return action.payload[Math.floor(Math.random() * 8)];
     default:
       return state;
   }
